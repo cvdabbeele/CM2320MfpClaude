@@ -2,9 +2,28 @@
 
 **Date:** 2026-11-25 22:48
 
-A macOS printer driver for the **HP Color LaserJet CM2320 MFP series** (CM2320n, CM2320nf, CM2320fxi). It works on current macOS, on Intel and Apple Silicon Macs.
+A macOS printer driver for the **HP Color LaserJet CM2320 MFP series** (CM2320n, CM2320nf, CM2320fxi). Developed and tested on macOS 26.5.2 on an Intel Mac. Built as a universal binary, so it should also run on Apple Silicon (not tested yet).
 
 HP's last macOS driver for this printer (v1.5.0, 2011) does not install on macOS 11 or later. The generic driver that macOS picks has no tray selection, no duplex unit option and no colour controls. CM2320MfpClaude is a new driver written from scratch. It contains no HP files.
+
+## Supported printers
+
+Tested on an **HP Color LaserJet CM2320fxi MFP**.
+
+HP's own driver for this series uses one printer description for all of these models, so CM2320MfpClaude should work on them too:
+
+| Model | Notes |
+|---|---|
+| HP Color LaserJet CM2320n MFP | No duplex unit: install with `DUPLEXER=False` |
+| HP Color LaserJet CM2320nf MFP | No duplex unit: install with `DUPLEXER=False` |
+| HP Color LaserJet CM2320fxi MFP | Duplex unit and Tray 3 (tested) |
+| HP Color LaserJet CM2320cb, CM2320cbb, CM2320ci MFP | Regional variants |
+| HP Color LaserJet CM2320eb, CM2320ebb, CM2320ei MFP | Regional variants |
+| HP Color LaserJet CM2320wb, CM2320wbb, CM2320wi MFP | Regional variants |
+
+Untested, possibly compatible: the **HP Color LaserJet CP2025** series (CP2025n, CP2025dn, CP2025x). It is the printer-only model of the same family, with the same toner cartridges (CC530A to CC533A). Paper size, duplex and colour settings probably work; the tray numbers may differ. Reports are welcome.
+
+Not compatible: the HP Color LaserJet CM1312, CM1015/CM1017 and LaserJet M1522/M2727 MFPs. HP's driver package covered them too, but they have different print engines and trays.
 
 ## How it works
 
@@ -40,7 +59,7 @@ Not included:
 
 ## Requirements
 
-- macOS 12 or later (tested on macOS 26.5.2, Intel).
+- macOS 12 or later (build target). Tested only on macOS 26.5.2, Intel. Reports from Apple Silicon Macs and older macOS versions are welcome.
 - Command Line Tools for Xcode (`xcode-select --install`), to build the pre-filter.
 - The printer on the network or USB.
 
@@ -99,6 +118,10 @@ List all options with `lpoptions -p CM2320MfpClaude -l`.
 | `scripts/` | Build, test, install and uninstall scripts |
 | `scripts/install_hp_v150.sh` | Optional: installs the PostScript part of HP's own v1.5.0 driver by hand, from your own copy of HP's installer. Not needed for CM2320MfpClaude. |
 | `CM2320Claude.md` | Development history |
+
+## Keywords
+
+HP Color LaserJet CM2320 driver for Mac, CM2320fxi MFP macOS driver, CM2320nf, CM2320n, macOS 26 Tahoe, macOS 15 Sequoia, macOS 14 Sonoma, macOS 13 Ventura, macOS 12 Monterey, Intel Mac, Apple Silicon, CUPS PPD, PostScript driver, duplex printing (recto verso, two-sided), tray selection (Tray 1, Tray 2, Tray 3, 500-sheet tray), booklet printing, watermark, letterhead mode, HP driver not supported on macOS, HP Easy Start alternative, HP v1.5.0 driver replacement, CP2025.
 
 ## License
 

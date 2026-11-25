@@ -151,7 +151,9 @@ Paper result, confirmed by the user: both correct (booklet order, fold, DRAFT wa
 - Kept: example address `socket://192.168.1.50:9100` (placeholder) in README and install script.
 - Not committed (`.gitignore`, local only): `work/` (HP and Windows driver files, builds, test output), `docs/`, `.backup/`, photos.
 - LICENSE copyright holder: "CM2320MfpClaude contributors" (can be changed).
-- First local commit made. No remote, nothing pushed.
+- First local commit made (b19394c). No remote, nothing pushed.
+- User decision: keep the current git author e-mail; do not push yet; the user adds own README text first.
+- README: added "Supported printers" (12 CM2320 variants from HP's PPD `*Product` list; CP2025 series listed as untested because it shares the toner and family, but its tray mapping could not be confirmed; CM1312, CM1015/1017, M1522, M2727 listed as not compatible) and a "Keywords" section. Not committed yet.
 
 ## 5. Plan (proposed)
 
