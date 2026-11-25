@@ -1,0 +1,407 @@
+*PPD-Adobe: "4.3"
+*% Created: 2026-11-25 22:21
+*%
+*% CM2320MfpClaude 1.0
+*% PostScript printer description for the HP Color LaserJet CM2320 MFP series
+*% (CM2320n, CM2320nf, CM2320fxi) on macOS with CUPS.
+*%
+*% Written for this project. The printer accepts PostScript level 3, so all
+*% device features are set with setpagedevice and the printer's ColorSmart
+*% operators. Features the printer cannot do itself (booklet, watermark,
+*% rotate 180, letterhead mode) are done by the CM2320MfpClaude pre-filter on
+*% the PDF before CUPS converts it to PostScript.
+*%
+*% License: MIT (see LICENSE in the project repository).
+*FormatVersion: "4.3"
+*FileVersion: "1.0"
+*LanguageVersion: English
+*LanguageEncoding: ISOLatin1
+*PCFileName: "CM2320MC.PPD"
+*Manufacturer: "HP"
+*Product: "(HP Color LaserJet CM2320n MFP)"
+*Product: "(HP Color LaserJet CM2320nf MFP)"
+*Product: "(HP Color LaserJet CM2320fxi MFP)"
+*ModelName: "HP Color LaserJet CM2320 MFP CM2320MfpClaude"
+*ShortNickName: "HP CLJ CM2320 CM2320MfpClaude"
+*NickName: "HP Color LaserJet CM2320 MFP - CM2320MfpClaude 1.0"
+*1284DeviceID: "MFG:Hewlett-Packard;MDL:HP Color LaserJet CM2320fxi MFP;CLS:PRINTER;"
+*PSVersion: "(3011.001) 1"
+*LanguageLevel: "3"
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*FileSystem: False
+*Throughput: "20"
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*cupsVersion: 2.3
+*cupsLanguages: "en"
+*cupsSNMPSupplies: True
+*cupsPreFilter: "application/pdf 0 /Library/Printers/CM2320MfpClaude/filter/cm2320claude-prefilter"
+
+*%==================================================================
+*% Installable options
+*%==================================================================
+*OpenGroup: InstallableOptions/Installable Options
+
+*OpenUI *OptionDuplexer/Duplex Unit: Boolean
+*OrderDependency: 10 AnySetup *OptionDuplexer
+*DefaultOptionDuplexer: True
+*OptionDuplexer True/Installed: ""
+*OptionDuplexer False/Not Installed: ""
+*CloseUI: *OptionDuplexer
+
+*OpenUI *OptionTray3/Tray 3: Boolean
+*OrderDependency: 10 AnySetup *OptionTray3
+*DefaultOptionTray3: False
+*OptionTray3 True/Installed: ""
+*OptionTray3 False/Not Installed: ""
+*CloseUI: *OptionTray3
+
+*CloseGroup: InstallableOptions
+
+*UIConstraints: *OptionDuplexer False *Duplex
+*UIConstraints: *Duplex *OptionDuplexer False
+*UIConstraints: *OptionDuplexer False *CMBooklet
+*UIConstraints: *CMBooklet *OptionDuplexer False
+*UIConstraints: *OptionDuplexer False *CMLetterhead True
+*UIConstraints: *CMLetterhead True *OptionDuplexer False
+*UIConstraints: *OptionTray3 False *InputSlot Tray3
+*UIConstraints: *InputSlot Tray3 *OptionTray3 False
+*UIConstraints: *CMBooklet *CMLetterhead True
+*UIConstraints: *CMLetterhead True *CMBooklet
+
+*%==================================================================
+*% Paper
+*%==================================================================
+*OpenUI *PageSize/Paper Size: PickOne
+*OrderDependency: 30 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize Letter/Letter: "<</PageSize [612 792] /ImagingBBox null>> setpagedevice"
+*PageSize Legal/Legal: "<</PageSize [612 1008] /ImagingBBox null>> setpagedevice"
+*PageSize Executive/Executive: "<</PageSize [522 756] /ImagingBBox null>> setpagedevice"
+*PageSize w612h935/8.5x13: "<</PageSize [612 935] /ImagingBBox null>> setpagedevice"
+*PageSize A4/A4: "<</PageSize [595 842] /ImagingBBox null>> setpagedevice"
+*PageSize A5/A5: "<</PageSize [420 595] /ImagingBBox null>> setpagedevice"
+*PageSize A6/A6: "<</PageSize [298 420] /ImagingBBox null>> setpagedevice"
+*PageSize B5/B5 (JIS): "<</PageSize [516 729] /ImagingBBox null>> setpagedevice"
+*PageSize w553h765/16K 195x270 mm: "<</PageSize [553 765] /ImagingBBox null>> setpagedevice"
+*PageSize w522h737/16K 184x260 mm: "<</PageSize [522 737] /ImagingBBox null>> setpagedevice"
+*PageSize w558h774/16K 197x273 mm: "<</PageSize [558 774] /ImagingBBox null>> setpagedevice"
+*PageSize 4x6/4x6: "<</PageSize [288 432] /ImagingBBox null>> setpagedevice"
+*PageSize 5x8/5x8: "<</PageSize [360 576] /ImagingBBox null>> setpagedevice"
+*PageSize w288h431/10x15 cm: "<</PageSize [288 431] /ImagingBBox null>> setpagedevice"
+*PageSize Postcard/Postcard (JIS): "<</PageSize [283 420] /ImagingBBox null>> setpagedevice"
+*PageSize DoublePostcardRotated/Double Postcard (JIS): "<</PageSize [419.5 567] /ImagingBBox null>> setpagedevice"
+*PageSize Env10/Envelope #10: "<</PageSize [297 684] /ImagingBBox null>> setpagedevice"
+*PageSize EnvMonarch/Envelope Monarch: "<</PageSize [279 540] /ImagingBBox null>> setpagedevice"
+*PageSize EnvISOB5/Envelope B5: "<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageSize EnvC5/Envelope C5: "<</PageSize [459 649] /ImagingBBox null>> setpagedevice"
+*PageSize EnvDL/Envelope DL: "<</PageSize [312 624] /ImagingBBox null>> setpagedevice"
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion/Paper Size: PickOne
+*OrderDependency: 30 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion Letter/Letter: "<</PageSize [612 792] /ImagingBBox null>> setpagedevice"
+*PageRegion Legal/Legal: "<</PageSize [612 1008] /ImagingBBox null>> setpagedevice"
+*PageRegion Executive/Executive: "<</PageSize [522 756] /ImagingBBox null>> setpagedevice"
+*PageRegion w612h935/8.5x13: "<</PageSize [612 935] /ImagingBBox null>> setpagedevice"
+*PageRegion A4/A4: "<</PageSize [595 842] /ImagingBBox null>> setpagedevice"
+*PageRegion A5/A5: "<</PageSize [420 595] /ImagingBBox null>> setpagedevice"
+*PageRegion A6/A6: "<</PageSize [298 420] /ImagingBBox null>> setpagedevice"
+*PageRegion B5/B5 (JIS): "<</PageSize [516 729] /ImagingBBox null>> setpagedevice"
+*PageRegion w553h765/16K 195x270 mm: "<</PageSize [553 765] /ImagingBBox null>> setpagedevice"
+*PageRegion w522h737/16K 184x260 mm: "<</PageSize [522 737] /ImagingBBox null>> setpagedevice"
+*PageRegion w558h774/16K 197x273 mm: "<</PageSize [558 774] /ImagingBBox null>> setpagedevice"
+*PageRegion 4x6/4x6: "<</PageSize [288 432] /ImagingBBox null>> setpagedevice"
+*PageRegion 5x8/5x8: "<</PageSize [360 576] /ImagingBBox null>> setpagedevice"
+*PageRegion w288h431/10x15 cm: "<</PageSize [288 431] /ImagingBBox null>> setpagedevice"
+*PageRegion Postcard/Postcard (JIS): "<</PageSize [283 420] /ImagingBBox null>> setpagedevice"
+*PageRegion DoublePostcardRotated/Double Postcard (JIS): "<</PageSize [419.5 567] /ImagingBBox null>> setpagedevice"
+*PageRegion Env10/Envelope #10: "<</PageSize [297 684] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvMonarch/Envelope Monarch: "<</PageSize [279 540] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvISOB5/Envelope B5: "<</PageSize [499 709] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvC5/Envelope C5: "<</PageSize [459 649] /ImagingBBox null>> setpagedevice"
+*PageRegion EnvDL/Envelope DL: "<</PageSize [312 624] /ImagingBBox null>> setpagedevice"
+*CloseUI: *PageRegion
+
+*DefaultImageableArea: A4
+*ImageableArea Letter/Letter: "12 12 600 780"
+*ImageableArea Legal/Legal: "12 12 600 996"
+*ImageableArea Executive/Executive: "12 12 510 744"
+*ImageableArea w612h935/8.5x13: "12 12 600 923"
+*ImageableArea A4/A4: "12 12 583 830"
+*ImageableArea A5/A5: "12 12 408 583"
+*ImageableArea A6/A6: "12 12 286 408"
+*ImageableArea B5/B5 (JIS): "12 12 504 717"
+*ImageableArea w553h765/16K 195x270 mm: "12 12 541 753"
+*ImageableArea w522h737/16K 184x260 mm: "12 12 510 725"
+*ImageableArea w558h774/16K 197x273 mm: "12 12 546 762"
+*ImageableArea 4x6/4x6: "12 12 276 420"
+*ImageableArea 5x8/5x8: "12 12 348 564"
+*ImageableArea w288h431/10x15 cm: "12 12 276 419"
+*ImageableArea Postcard/Postcard (JIS): "12 12 271 408"
+*ImageableArea DoublePostcardRotated/Double Postcard (JIS): "12 12 407.5 555"
+*ImageableArea Env10/Envelope #10: "12 12 285 672"
+*ImageableArea EnvMonarch/Envelope Monarch: "12 12 267 528"
+*ImageableArea EnvISOB5/Envelope B5: "12 12 487 697"
+*ImageableArea EnvC5/Envelope C5: "12 12 447 637"
+*ImageableArea EnvDL/Envelope DL: "12 12 300 612"
+
+*DefaultPaperDimension: A4
+*PaperDimension Letter/Letter: "612 792"
+*PaperDimension Legal/Legal: "612 1008"
+*PaperDimension Executive/Executive: "522 756"
+*PaperDimension w612h935/8.5x13: "612 935"
+*PaperDimension A4/A4: "595 842"
+*PaperDimension A5/A5: "420 595"
+*PaperDimension A6/A6: "298 420"
+*PaperDimension B5/B5 (JIS): "516 729"
+*PaperDimension w553h765/16K 195x270 mm: "553 765"
+*PaperDimension w522h737/16K 184x260 mm: "522 737"
+*PaperDimension w558h774/16K 197x273 mm: "558 774"
+*PaperDimension 4x6/4x6: "288 432"
+*PaperDimension 5x8/5x8: "360 576"
+*PaperDimension w288h431/10x15 cm: "288 431"
+*PaperDimension Postcard/Postcard (JIS): "283 420"
+*PaperDimension DoublePostcardRotated/Double Postcard (JIS): "419.5 567"
+*PaperDimension Env10/Envelope #10: "297 684"
+*PaperDimension EnvMonarch/Envelope Monarch: "279 540"
+*PaperDimension EnvISOB5/Envelope B5: "499 709"
+*PaperDimension EnvC5/Envelope C5: "459 649"
+*PaperDimension EnvDL/Envelope DL: "312 624"
+
+*% Custom size: 76 x 127 mm up to 216 x 356 mm (Tray 1 limits).
+*HWMargins: 12 12 12 12
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1008"
+*VariablePaperSize: True
+*CustomPageSize True: "pop pop pop <</DeferredMediaSelection true /PageSize [ 7 -2 roll ] /ImagingBBox null>> setpagedevice"
+*End
+*ParamCustomPageSize Width: 1 points 216 612
+*ParamCustomPageSize Height: 2 points 360 1008
+*ParamCustomPageSize WidthOffset: 3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation: 5 int 0 0
+
+*OpenUI *InputSlot/Paper Source: PickOne
+*OrderDependency: 40 AnySetup *InputSlot
+*DefaultInputSlot: Auto
+*InputSlot Auto/Automatic: "<</ManualFeed false /MediaPosition null>> setpagedevice"
+*InputSlot Tray1/Tray 1: "<</ManualFeed false /MediaPosition 3>> setpagedevice"
+*InputSlot Tray2/Tray 2: "<</ManualFeed false /MediaPosition 0>> setpagedevice"
+*InputSlot Tray3/Tray 3: "<</ManualFeed false /MediaPosition 1>> setpagedevice"
+*InputSlot ManualFeed/Tray 1 (Manual Feed): "<</ManualFeed true /MediaPosition 3>> setpagedevice"
+*CloseUI: *InputSlot
+
+*OpenUI *Duplex/Two-Sided: PickOne
+*OrderDependency: 50 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/Off: "<</Duplex false>> setpagedevice"
+*Duplex DuplexNoTumble/Long-Edge Binding: "<</Duplex true /Tumble false>> setpagedevice"
+*Duplex DuplexTumble/Short-Edge Binding: "<</Duplex true /Tumble true>> setpagedevice"
+*CloseUI: *Duplex
+
+*OpenUI *MediaType/Media Type: PickOne
+*OrderDependency: 45 AnySetup *MediaType
+*DefaultMediaType: Unspecified
+*MediaType Unspecified/Printer Default: ""
+*MediaType Plain/Plain: "<</MediaType (Plain)>> setpagedevice"
+*MediaType Light/Light 60-74 g: "<</MediaType (Light)>> setpagedevice"
+*MediaType MidWeight/Mid-Weight 96-110 g: "<</MediaType (Mid Weight)>> setpagedevice"
+*MediaType Heavy/Heavy 111-130 g: "<</MediaType (Heavy)>> setpagedevice"
+*MediaType ExtraHeavy/Extra Heavy 131-175 g: "<</MediaType (Extra Heavy)>> setpagedevice"
+*MediaType MidWeightGlossy/Mid-Weight Glossy 96-110 g: "<</MediaType (Gloss)>> setpagedevice"
+*MediaType HeavyGlossy/Heavy Glossy 111-130 g: "<</MediaType (Heavy Gloss)>> setpagedevice"
+*MediaType ExtraHeavyGlossy/Extra Heavy Glossy 131-175 g: "<</MediaType (Extra Heavy Gloss)>> setpagedevice"
+*MediaType CardGlossy/Card Glossy 176-220 g: "<</MediaType (Card Glossy)>> setpagedevice"
+*MediaType Matte90/HP Matte 90 g: "<</MediaType (HP Matte 90)>> setpagedevice"
+*MediaType Matte105/HP Matte 105 g: "<</MediaType (HP Matte 105)>> setpagedevice"
+*MediaType Matte120/HP Matte 120 g: "<</MediaType (HP Matte 120)>> setpagedevice"
+*MediaType Matte160/HP Matte 150-160 g: "<</MediaType (HP Matte 160)>> setpagedevice"
+*MediaType CoverMatte/HP Cover Matte 200 g: "<</MediaType (HPCoverMatte)>> setpagedevice"
+*MediaType MattePhoto/HP Matte Photo 200 g: "<</MediaType (Matte Photo)>> setpagedevice"
+*MediaType Glossy130/HP Glossy 120-130 g: "<</MediaType (HP Glossy 130)>> setpagedevice"
+*MediaType TriGlossy160/HP Tri-fold Glossy 150-160 g: "<</MediaType (HP Tri Glossy 160)>> setpagedevice"
+*MediaType Glossy160/HP Glossy 150-160 g: "<</MediaType (HP Glossy 160)>> setpagedevice"
+*MediaType Glossy220/HP Glossy 200-220 g: "<</MediaType (HP Glossy 220)>> setpagedevice"
+*MediaType Tough/HP Tough Paper: "<</MediaType (HP Tough)>> setpagedevice"
+*MediaType Transparency/Color Laser Transparency: "<</MediaType (Transparency)>> setpagedevice"
+*MediaType Labels/Labels: "<</MediaType (Labels)>> setpagedevice"
+*MediaType Letterhead/Letterhead: "<</MediaType (Letterhead)>> setpagedevice"
+*MediaType Envelope/Envelope: "<</MediaType (Envelope)>> setpagedevice"
+*MediaType HeavyEnvelope/Heavy Envelope: "<</MediaType (Heavy Envelope)>> setpagedevice"
+*MediaType Preprinted/Preprinted: "<</MediaType (Preprinted)>> setpagedevice"
+*MediaType Prepunched/Prepunched: "<</MediaType (Prepunched)>> setpagedevice"
+*MediaType Colored/Colored: "<</MediaType (Color)>> setpagedevice"
+*MediaType Bond/Bond: "<</MediaType (Bond)>> setpagedevice"
+*MediaType Recycled/Recycled: "<</MediaType (Recycled)>> setpagedevice"
+*MediaType Rough/Rough: "<</MediaType (Rough)>> setpagedevice"
+*MediaType HeavyRough/Heavy Rough: "<</MediaType (Heavy Rough)>> setpagedevice"
+*CloseUI: *MediaType
+
+*%==================================================================
+*% Color
+*%==================================================================
+*OpenUI *ColorModel/Color Mode: PickOne
+*OrderDependency: 20 AnySetup *ColorModel
+*DefaultColorModel: CMYK
+*ColorModel CMYK/Color: "<</ProcessColorModel /DeviceCMYK /HWResolution [600 600]>> setpagedevice"
+*ColorModel Gray/Grayscale: "<</ProcessColorModel /DeviceGray /HWResolution [600 600] /PreRenderingEnhance false>> setpagedevice"
+*CloseUI: *ColorModel
+
+*OpenGroup: ColorOptions/Color Options
+
+*OpenUI *CMEdgeControl/Edge Control: PickOne
+*OrderDependency: 57 AnySetup *CMEdgeControl
+*DefaultCMEdgeControl: Normal
+*CMEdgeControl Off/Off: "globaldict /HPTextAdaptiveHalftoning known { false HPTextAdaptiveHalftoning false HPGraphicsAdaptiveHalftoning false HPImageAdaptiveHalftoning } if globaldict /HPColorTrapping known { Off HPColorTrapping } if"
+*CMEdgeControl Light/Light: "globaldict /HPTextAdaptiveHalftoning known { true HPTextAdaptiveHalftoning true HPGraphicsAdaptiveHalftoning true HPImageAdaptiveHalftoning } if globaldict /HPColorTrapping known { Light HPColorTrapping } if"
+*CMEdgeControl Normal/Normal: "globaldict /HPTextAdaptiveHalftoning known { true HPTextAdaptiveHalftoning true HPGraphicsAdaptiveHalftoning true HPImageAdaptiveHalftoning } if globaldict /HPColorTrapping known { Normal HPColorTrapping } if"
+*CMEdgeControl Max/Maximum: "globaldict /HPTextAdaptiveHalftoning known { true HPTextAdaptiveHalftoning true HPGraphicsAdaptiveHalftoning true HPImageAdaptiveHalftoning } if globaldict /HPColorTrapping known { Max HPColorTrapping } if"
+*CloseUI: *CMEdgeControl
+
+*OpenUI *CMTextHalftone/Text Halftone: PickOne
+*OrderDependency: 57 AnySetup *CMTextHalftone
+*DefaultCMTextHalftone: Smooth
+*CMTextHalftone Smooth/Smooth: "globaldict /ColorSmartColorMatching known { Smooth ColorSmartTextHalftone } if"
+*CMTextHalftone Detail/Detail: "globaldict /ColorSmartColorMatching known { Detail ColorSmartTextHalftone } if"
+*CloseUI: *CMTextHalftone
+
+*OpenUI *CMGraphicsHalftone/Graphics Halftone: PickOne
+*OrderDependency: 57 AnySetup *CMGraphicsHalftone
+*DefaultCMGraphicsHalftone: Smooth
+*CMGraphicsHalftone Smooth/Smooth: "globaldict /ColorSmartColorMatching known { Smooth ColorSmartGraphicsHalftone } if"
+*CMGraphicsHalftone Detail/Detail: "globaldict /ColorSmartColorMatching known { Detail ColorSmartGraphicsHalftone } if"
+*CloseUI: *CMGraphicsHalftone
+
+*OpenUI *CMPhotoHalftone/Photo Halftone: PickOne
+*OrderDependency: 57 AnySetup *CMPhotoHalftone
+*DefaultCMPhotoHalftone: Smooth
+*CMPhotoHalftone Smooth/Smooth: "globaldict /ColorSmartColorMatching known { Smooth ColorSmartImageHalftone } if"
+*CMPhotoHalftone Detail/Detail: "globaldict /ColorSmartColorMatching known { Detail ColorSmartImageHalftone } if"
+*CloseUI: *CMPhotoHalftone
+
+*OpenUI *CMTextRGB/Text RGB Color: PickOne
+*OrderDependency: 57 AnySetup *CMTextRGB
+*DefaultCMTextRGB: sRGB
+*CMTextRGB sRGB/Default (sRGB): "globaldict /ColorSmartColorMatching known { (MatchScreen) ColorSmartTextAdjustment } if"
+*CMTextRGB Vivid/Vivid: "globaldict /ColorSmartColorMatching known { (Vivid) ColorSmartTextAdjustment } if"
+*CMTextRGB Photo/Photo: "globaldict /ColorSmartColorMatching known { (PhotoQuality) ColorSmartTextAdjustment } if"
+*CMTextRGB AdobeRGB/Photo (Adobe RGB 1998): "globaldict /ColorSmartColorMatching known { (AdobeRGB) ColorSmartTextAdjustment } if"
+*CMTextRGB None/None: "globaldict /ColorSmartColorMatching known { (NoAdj) ColorSmartTextAdjustment } if"
+*CloseUI: *CMTextRGB
+
+*OpenUI *CMGraphicsRGB/Graphics RGB Color: PickOne
+*OrderDependency: 57 AnySetup *CMGraphicsRGB
+*DefaultCMGraphicsRGB: sRGB
+*CMGraphicsRGB sRGB/Default (sRGB): "globaldict /ColorSmartColorMatching known { (MatchScreen) ColorSmartGraphicsAdjustment } if"
+*CMGraphicsRGB Vivid/Vivid: "globaldict /ColorSmartColorMatching known { (Vivid) ColorSmartGraphicsAdjustment } if"
+*CMGraphicsRGB Photo/Photo: "globaldict /ColorSmartColorMatching known { (PhotoQuality) ColorSmartGraphicsAdjustment } if"
+*CMGraphicsRGB AdobeRGB/Photo (Adobe RGB 1998): "globaldict /ColorSmartColorMatching known { (AdobeRGB) ColorSmartGraphicsAdjustment } if"
+*CMGraphicsRGB None/None: "globaldict /ColorSmartColorMatching known { (NoAdj) ColorSmartGraphicsAdjustment } if"
+*CloseUI: *CMGraphicsRGB
+
+*OpenUI *CMPhotoRGB/Photo RGB Color: PickOne
+*OrderDependency: 57 AnySetup *CMPhotoRGB
+*DefaultCMPhotoRGB: sRGB
+*CMPhotoRGB sRGB/Default (sRGB): "globaldict /ColorSmartColorMatching known { (MatchScreen) ColorSmartImageAdjustment } if"
+*CMPhotoRGB Vivid/Vivid: "globaldict /ColorSmartColorMatching known { (Vivid) ColorSmartImageAdjustment } if"
+*CMPhotoRGB Photo/Photo: "globaldict /ColorSmartColorMatching known { (PhotoQuality) ColorSmartImageAdjustment } if"
+*CMPhotoRGB AdobeRGB/Photo (Adobe RGB 1998): "globaldict /ColorSmartColorMatching known { (AdobeRGB) ColorSmartImageAdjustment } if"
+*CMPhotoRGB None/None: "globaldict /ColorSmartColorMatching known { (NoAdj) ColorSmartImageAdjustment } if"
+*CloseUI: *CMPhotoRGB
+
+*OpenUI *CMTextGrays/Text Neutral Grays: PickOne
+*OrderDependency: 57 AnySetup *CMTextGrays
+*DefaultCMTextGrays: Black
+*CMTextGrays Black/Black Only: "globaldict /HPTextNeutralAxis known { TonerBlack HPTextNeutralAxis } if"
+*CMTextGrays Process/4-Color: "globaldict /HPTextNeutralAxis known { ProcBlack HPTextNeutralAxis } if"
+*CloseUI: *CMTextGrays
+
+*OpenUI *CMGraphicsGrays/Graphics Neutral Grays: PickOne
+*OrderDependency: 57 AnySetup *CMGraphicsGrays
+*DefaultCMGraphicsGrays: Black
+*CMGraphicsGrays Black/Black Only: "globaldict /HPGraphicsNeutralAxis known { TonerBlack HPGraphicsNeutralAxis } if"
+*CMGraphicsGrays Process/4-Color: "globaldict /HPGraphicsNeutralAxis known { ProcBlack HPGraphicsNeutralAxis } if"
+*CloseUI: *CMGraphicsGrays
+
+*OpenUI *CMPhotoGrays/Photo Neutral Grays: PickOne
+*OrderDependency: 57 AnySetup *CMPhotoGrays
+*DefaultCMPhotoGrays: Process
+*CMPhotoGrays Black/Black Only: "globaldict /HPImageNeutralAxis known { TonerBlack HPImageNeutralAxis } if"
+*CMPhotoGrays Process/4-Color: "globaldict /HPImageNeutralAxis known { ProcBlack HPImageNeutralAxis } if"
+*CloseUI: *CMPhotoGrays
+
+*CloseGroup: ColorOptions
+
+*%==================================================================
+*% Pre-filter features (done on the PDF by cm2320claude-prefilter)
+*%==================================================================
+*OpenGroup: CMFinishing/Layout Extras
+
+*% Booklet: the pre-filter imposes 2 pages per side; the code below forces
+*% short-edge duplex, which a folded booklet needs.
+*OpenUI *CMBooklet/Booklet: PickOne
+*OrderDependency: 60 AnySetup *CMBooklet
+*DefaultCMBooklet: Off
+*CMBooklet Off/Off: ""
+*CMBooklet LeftBinding/Left Binding: "<</Duplex true /Tumble true>> setpagedevice"
+*CMBooklet RightBinding/Right Binding: "<</Duplex true /Tumble true>> setpagedevice"
+*CloseUI: *CMBooklet
+
+*% Letterhead mode: single-sided jobs also go through the duplex path, so
+*% preprinted paper is loaded the same way for 1- and 2-sided jobs.
+*OpenUI *CMLetterhead/Letterhead Mode: Boolean
+*OrderDependency: 60 AnySetup *CMLetterhead
+*DefaultCMLetterhead: False
+*CMLetterhead False/Off: ""
+*CMLetterhead True/On: "<</Duplex true>> setpagedevice"
+*CloseUI: *CMLetterhead
+
+*OpenUI *CMRotate180/Rotate 180 Degrees: Boolean
+*OrderDependency: 60 AnySetup *CMRotate180
+*DefaultCMRotate180: False
+*CMRotate180 False/Off: ""
+*CMRotate180 True/On: ""
+*CloseUI: *CMRotate180
+
+*OpenUI *CMWmText/Watermark: PickOne
+*OrderDependency: 60 AnySetup *CMWmText
+*DefaultCMWmText: Off
+*CMWmText Off/Off: ""
+*CMWmText Draft/DRAFT: ""
+*CMWmText Confidential/CONFIDENTIAL: ""
+*CMWmText Copy/COPY: ""
+*CMWmText Sample/SAMPLE: ""
+*CMWmText Internal/INTERNAL: ""
+*CMWmText DoNotCopy/DO NOT COPY: ""
+*CloseUI: *CMWmText
+
+*OpenUI *CMWmPages/Watermark Pages: PickOne
+*OrderDependency: 60 AnySetup *CMWmPages
+*DefaultCMWmPages: All
+*CMWmPages All/All Pages: ""
+*CMWmPages First/First Page Only: ""
+*CloseUI: *CMWmPages
+
+*OpenUI *CMWmIntensity/Watermark Intensity: PickOne
+*OrderDependency: 60 AnySetup *CMWmIntensity
+*DefaultCMWmIntensity: Medium
+*CMWmIntensity Light/Light: ""
+*CMWmIntensity Medium/Medium: ""
+*CMWmIntensity Dark/Dark: ""
+*CloseUI: *CMWmIntensity
+
+*CloseGroup: CMFinishing
+
+*%==================================================================
+*% Fonts: the printer has the standard 35 PostScript fonts; CUPS embeds
+*% the fonts of the document, so no font list is needed here.
+*%==================================================================
+*DefaultFont: Courier
+*Font Courier: Standard "(002.004S)" Standard ROM
+*Font Helvetica: Standard "(001.006S)" Standard ROM
+*Font Times-Roman: Standard "(001.007S)" Standard ROM
+*Font Symbol: Special "(001.007S)" Special ROM
+*% End of CM2320MfpClaude.ppd
